@@ -1,3 +1,7 @@
+--Steven Bacdayan--
+--9/21/2014--
+--Lab 3 q8--
+
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS agents;
