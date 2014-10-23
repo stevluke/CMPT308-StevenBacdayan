@@ -1,0 +1,60 @@
+--q1
+SELECT Agents.name, Agents.city
+FROM Agents
+WHERE  Agents.aid IN (SELECT  Orders.aid
+		FROM Orders
+		WHERE Orders.cid =(SELECT Customers.cid
+					FROM Customers
+					WHERE Customers.name = 'Tiptop')
+		);
+
+--q2
+SELECT Products.pid
+FROM Products
+WHERE Products.pid IN (SELECT ORDERS.pid
+			FROM Orders
+			WHERE Orders.aid IN (SELECT Orders.aid
+					FROM Orders
+					WHERE Orders.cid = (SELECT Customers.cid
+							FROM CUSTOMERS
+							WHERE Customers.city='Kyoto')
+							)
+							);
+
+--q3
+SELECT Customers.cid, Customers.name
+FROM Customers
+WHERE Customers.cid NOT IN (SELECT Orders.cid
+			FROM Orders
+			WHERE Orders.aid='a04');
+
+--q4
+SELECT Customers.cid, Customers.name
+FROM Customers
+WHERE Customers.cid IN (SELECT Orders.cid
+			FROM Orders
+			WHERE Orders.pid IN ('p01','p07')
+			);
+
+--q5
+SELECT Orders.pid
+FROM Orders
+WHERE Orders.aid='a04';
+
+--q6
+SELECT Customers.name, Customers.discount
+FROM Customers
+WHERE Customers.cid IN (Select Orders.cid
+			FROM Orders
+			WHERE Orders.aid IN (SELECT Agents.aid
+						FROM Agents
+						WHERE Agents.city IN ('Dallas','Newark')));
+-
+--q7
+SELECT Customers.name, Customers.discount
+FROM Customers
+WHERE Customers.cid IN (Select Orders.cid
+			FROM Orders
+			WHERE Orders.aid IN (SELECT Agents.aid
+						FROM Agents
+						WHERE Agents.city IN ('Dallas','Kyoto')));
