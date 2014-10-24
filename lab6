@@ -172,7 +172,7 @@ INSERT INTO Orders( ordno, mon, cid, aid, pid, qty, dollars )
 -- Connect to your Postgres server and set the active database to CAP2.  Then . . .
 
 --q1
-SELECT  DISTINCT Customers.name,  Customers.city, Count (Products.name)
+SELECT  DISTINCT Customers.name,  Customers.city
 FROM Customers 
 JOIN PRODUCTS
 ON  CUSTOMERS.city=Products.city
