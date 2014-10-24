@@ -179,21 +179,21 @@ ON  CUSTOMERS.city=Products.city
 GROUP BY Customers.name,Customers.city
 HAVING Count ( Products.name)=(SELECT MAX(cnt)
 			                         FROM (SELECT Products.city, Count (Products.name) as cnt
-					                           FROM PRODUCTS
-					                           GROUP BY Products.city)as counting
+					               FROM PRODUCTS
+					               GROUP BY Products.city)as counting
 			                        )
 LIMIT 1;	
 
 --q2
-SELECT  DISTINCT Customers.name,  Customers.city, Count (Products.name)
+SELECT  DISTINCT Customers.name,  Customers.city
 FROM Customers 
 JOIN PRODUCTS
 ON  CUSTOMERS.city=Products.city
 GROUP BY Customers.name,Customers.city
 HAVING Count ( Products.name)=(SELECT MAX(cnt)
 			                          FROM ( SELECT Products.city, Count (Products.name) as cnt
-				                               FROM PRODUCTS
-				                               GROUP BY Products.city)as counting
+				                         FROM PRODUCTS
+				                         GROUP BY Products.city)as counting
 			                         );
 
 
